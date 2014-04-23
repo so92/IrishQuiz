@@ -29,13 +29,40 @@ function initDB() {
 initDB();
 //prePopulate();
 console.log("database init");
-quiz_questions();
+//quiz_questions();
 //load_answer_bank();
+//county_maps();
 
+function county_maps(){
+//Populating County Questions
+	var countyMaps = ["images/derry.jpg","images/donegal.jpg","images/dublin.jpg","images/galway.jpg","images/kerry.jpg","images/kilkenny.jpg","images/leitrim.jpg","images/limerick.jpg","images/mayo.jpg","images/tyrone.jpg"];
+	
+					
+	var countyAns = ['Derry','Donegal','Dublin','Galway','Kerry','Kilkenny','Leitrim','Limerick','Mayo','Tyrone'];
+					
+	var countyM1 = ['Derry','Donegal','Dublin','Galway','Kerry','Kilkenny','Leitrim','Limerick','Mayo','Tyrone'];
+					
+	var countyM2 = ['Derry','Donegal','Dublin','Galway','Kerry','Kilkenny','Leitrim','Limerick','Mayo','Tyrone'];
+					
+	var countyM3 = ['Derry','Donegal','Dublin','Galway','Kerry','Kilkenny','Leitrim','Limerick','Mayo','Tyrone'];
 
+		for(var i=0, l = countyMaps.length; i < l; i++){
+	    	console.log("Question -"+countyMaps[i]+ " Answer -"+countyAns[i]+ " Multiple choice 1 -"+countyM1[i]+ " Multiple choice 2 -"+countyM2[i]+ " Multiple choice 3 -"+countyM3[i]);
+	    	var quiz_id = 2;
+	    	var question = countyMaps[i];
+	    	var answer = countyAns[i];
+	    	var mChoice1 = countyM1[i];
+	    	var mChoice2 = countyM2[i];
+	    	var mChoice3 = countyM3[i];
+	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
+		}
+		
+	alert("added");	
+
+}
 
 function quiz_questions(){
-
+//Populating County Questions
 	var countyQs = ['Largest County in Ireland ?',
 					'Smallest County in Ireland ?',
 					'Most Northerly County ?',
@@ -46,15 +73,7 @@ function quiz_questions(){
 					'Most populated County?',
 					'Least populated County?'];
 					
-	var countyAns = ['Cork',
-					'Louth',
-					'Donegal',
-					'Down',
-					'Cork',
-					'Kerry',
-					'Roscommon',
-					'Dublin',
-					'Leitrim'];
+	var countyAns = ['Cork','Louth','Donegal','Down','Cork','Kerry','Roscommon','Dublin','Leitrim'];
 					
 	var countyM1 = ['Mayo','Clare','Dery','Dublin','Kerry','Galway','Longford','Antrim','Meath'];
 					
@@ -73,54 +92,63 @@ function quiz_questions(){
 	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
 		}
 		
-	/*	
+	alert("added");	
 	var mountainQs = 	['What is the Highest Mountain in Ireland ?',
 						'What is the Highest Mountain in Ulster ?',
 						'What is the Highest Mountain in Leinster ?',
 						'What is the Highest Mountain in Connacht ?',
 						'What is the Highest Mountain in Munster ?'];
 					
-	var mountainAs = 	['Carrauntoohil',
-						'Slieve Donard',
-						'Lugnaquilla',
-						'Mweelrea',
-						'Carrauntoohil'];
+	var mountainAns = 	['Carrauntoohil','Slieve Donard','Lugnaquilla','Mweelrea','Carrauntoohil'];
+	
+	var mountainM1 = 	['Slieve Donard','Slieve Bearnagh','Mount Leinster','Croagh Patrick','Mullaghmore'];
+	
+	var mountainM2 = 	['Galtymore','Divis','Maulin','Ben Gorm','Sugarloaf'];
+
+	var mountainM3 = 	['Cnoc na Péiste','Slemish','Slieveboy','Slievemore','Knockboy'];
+
+
 
 		for(var i=0, l = mountainQs.length; i < l; i++){
-	    	console.log("Question -"+mountainQs[i]+ " Answer -"+mountainAs[i]);
-	    	var answers_id = 2;
+	    	console.log("Question -"+mountainQs[i]+ " Answer -"+mountainAns[i]+ " Multiple choice 1 -"+mountainM1[i]+ " Multiple choice 2 -"+mountainM2[i]+ " Multiple choice 3 -"+mountainM3[i]);	    	
 	    	var quiz_id = 1;
 	    	var question = mountainQs[i];
-	    	var answer = mountainAs[i];
-	    	addToQuiz_Questions(question, answer, quiz_id, answers_id);   	
+	    	var answer = mountainAns[i];
+	    	var mChoice1 = mountainM1[i];
+	    	var mChoice2 = mountainM2[i];
+	    	var mChoice3 = mountainM3[i];
+	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
 		}
 		
+		alert("added");	
 
 	var riverQs = ['Which River flows into the largest lake in Northern Ireland ?',
 					'Name which river did the famous battle in 1690 take place involving William of Orange ?',
-					'Name the river that flows through Derry?',
+					'Name the river that flows through the City of Derry?',
 					'Name the river that flows through Belfast?',
 					'Name the river that flows through Cork?',
 					'Which famous river runs through Dublin?',
 					'Which River is the Longest in Ireland ?'];
 					
-	var riverAs = ['River Bann',
-					'River Boyne',
-					'River Foyle',
-					'River Lagan',
-					'River Lee',
-					'River Liffey',
-					'River Shannon'];
+	var riverAns = ['River Bann','River Boyne','River Foyle','River Lagan','River Lee','River Liffey','River Shannon'];
+	
+	var riverM1 = ['River Foyle','Arney River','River Moyola','River Bann','Munster Blackwater','Inch River','River Barrow'];
+	var riverM2 = ['River Erne','River Moy','River Bann','Six Mile Water','River Roe','Devlin River','River Suir'];
+	var riverM3 = ['River Lagan','River Nore','River Derry','River Bush','River Boyne','River Bann','River Bann'];
 
 		for(var i=0, l = riverQs.length; i < l; i++){
-	    	console.log("Question -"+riverQs[i]+ " Answer -"+riverAs[i]);
-	    	var answers_id = 3;
+			
+			console.log("Question -"+riverQs[i]+ " Answer -"+riverAns[i]+ " Multiple choice 1 -"+riverM1[i]+ " Multiple choice 2 -"+riverM2[i]+ " Multiple choice 3 -"+riverM3[i]);	    	
 	    	var quiz_id = 1;
 	    	var question = riverQs[i];
-	    	var answer = riverAs[i];
-	    	addToQuiz_Questions(question, answer, quiz_id, answers_id);     	
+	    	var answer = riverAns[i];
+	    	var mChoice1 = riverM1[i];
+	    	var mChoice2 = riverM2[i];
+	    	var mChoice3 = riverM3[i];
+	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
 		}
-*/
+	alert("added");	
+
 }
 
 function addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id){
