@@ -13,31 +13,50 @@
 	</head>
 	
 	<body>
- <h4>Geography</h4>
- <button type="button" id="showQuestions" onclick="showQuestions();">Show Questions</button>
- <button type="button" id="showCounties" onclick="showCounties();">Show Counties</button>
-<div id= "question_0"  style="visibility: hidden;"></div>
-<div id= "question_1" style="visibility: hidden;"></div>
-<div id= "question_2" style="visibility: hidden;"></div>
-<div id= "question_3" style="visibility: hidden;"></div>
-<div id= "question_4" style="visibility: hidden;"></div>
-<div id= "question_5" style="visibility: hidden;"></div>
-<div id= "question_6" style="visibility: hidden;"></div>
-<div id= "question_7" style="visibility: hidden;"></div>
-<div id= "question_8" style="visibility: hidden;"></div>
-<div id= "question_9" style="visibility: hidden;"></div>
-<div id= "question_10" style="visibility: hidden;"></div>
-
-    
+		
+		
+		
+	<div id="UserSelect">
+		<div id="NewUser">
+			 <h3><p><b>New User ? enter details</b></p></h3>
+		    <label>Forname:</label>
+		    <input type="text" id="fname" data-mini="true"/>
+		    <label>Surname:</label>
+		    <input type="text" id="sname" data-mini="true"/>
+		    <button type="button" id="adduser" onclick="addUser();">Add User</button>
+	    </div>
+	    <div id="ExistingUser">
+			 <h3>Existing Users</h3>
+	   <ul data-role="listview" id="userlist"></ul>
+	    </div>
+	</div>	
+	
+	
+		
+	<div id="PlayQuiz" style="display: none;">	
+		<div id="PlayerNameHolder"></div>
+ 		<button type="button" class="showQuestions" onclick="showQuestions(1);">Geography Quiz</button>
+  		<button type="button" class="showQuestions" onclick="showQuestions(3);">History Quiz</button>
+ 		<button type="button" class="showQuestions" onclick="showCounties();">Name that County Quiz</button>
  
-  <button type="button" id="showAnswers" onclick="showAnswers();">Show Answers</button>
-  <button type="button" id="checkAnswers" onclick="checkAnswers();">Check Answers</button>
- <div id= "answers"></div>
+			<div id= "question_0"  style="display: none;"></div>
+			<div id= "question_1" style="display: none;"></div>
+			<div id= "question_2" style="display: none;"></div>
+			<div id= "question_3" style="display: none;"></div>
+			<div id= "question_4" style="display: none;"></div>
+			<div id= "question_5" style="display: none;"></div>
+			<div id= "question_6" style="display: none;"></div>
+			<div id= "question_7" style="display: none;"></div>
+			<div id= "question_8" style="display: none;"></div>
+			<div id= "question_9" style="display: none;"></div>
+
+		 <div id= "answers"></div>
 	
-	
+	</div>	
 	
 	<script src="js/database_init.js"></script>	
 	<script src="js/questions.js"></script>	
+	<script src="js/user.js"></script>	
 	
 	</body>
 	

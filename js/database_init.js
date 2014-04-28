@@ -10,15 +10,15 @@ function initDB() {
     function createTables() {
         mydb.transaction(function (t) {
            t.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY ASC, fname TEXT, sname TEXT)");
-           t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user_id INTEGER, quiz_id INTEGER, score INTEGER, date DATE, FOREIGN KEY(user_id) REFERENCES user(id))");
+           t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user TEXT, quiz_id INTEGER, score INTEGER, date DATE)");
            // t.executeSql("CREATE TABLE IF NOT EXISTS positions (number INTEGER, position TEXT)");
            // t.executeSql("CREATE TABLE IF NOT EXISTS myTeams (id_match INTEGER, position TEXT, id_players, FOREIGN KEY(id_match) REFERENCES match(id),FOREIGN KEY(id_players) REFERENCES players(id))");
            // t.executeSql("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY ASC, xC INT, yC INT, type TEXT, time TEXT, id_match INTEGER, half TEXT, FOREIGN KEY(id_match) REFERENCES match(id))");
            // t.executeSql("CREATE TABLE IF NOT EXISTS recordableStats (id INTEGER PRIMARY KEY ASC, statType TEXT)");
            //	t.executeSql("CREATE TABLE IF NOT EXISTS answer_bank (id INTEGER PRIMARY KEY ASC, answer_bank_id INTEGER, answer TEXT)");
        		t.executeSql("CREATE TABLE IF NOT EXISTS quiz_questions (id INTEGER PRIMARY KEY ASC, question TEXT, question_answer TEXT, mChoice1 TEXT, mChoice2 TEXT, mChoice3 TEXT, quiz_id INTEGER)");
-		//	t.executeSql("DROP TABLE answer_bank");
-		//	t.executeSql("DROP TABLE quiz_questions");   
+
+			//t.executeSql("DROP TABLE scores");   
 			
         });
     }
@@ -29,9 +29,20 @@ function initDB() {
 initDB();
 //prePopulate();
 console.log("database init");
-//quiz_questions();
+
 //load_answer_bank();
 //county_maps();
+//Geography_quiz_questions();
+//History_quiz_questions();
+
+/*
+ * Quiz Ids
+ * 1 - Geography
+ * 2 - County Maps
+ * 3 - History
+ */
+
+
 
 function county_maps(){
 //Populating County Questions
@@ -61,9 +72,9 @@ function county_maps(){
 
 }
 
-function quiz_questions(){
+function Geography_quiz_questions(){
 //Populating County Questions
-	var countyQs = ['Largest County in Ireland ?',
+	var geographyQs = ['Largest County in Ireland ?',
 					'Smallest County in Ireland ?',
 					'Most Northerly County ?',
 					'Most easterly County ?',
@@ -71,126 +82,255 @@ function quiz_questions(){
 					'Most westerly County?',
 					'County at Geographical Centre ?',
 					'Most populated County?',
-					'Least populated County?'];
-					
-	var countyAns = ['Cork','Louth','Donegal','Down','Cork','Kerry','Roscommon','Dublin','Leitrim'];
-					
-	var countyM1 = ['Mayo','Clare','Dery','Dublin','Kerry','Galway','Longford','Antrim','Meath'];
-					
-	var countyM2 = ['Dublin','Laois','Sligo','Wexford','Meath','Dublin','Wexford','Cork','Derry'];
-					
-	var countyM3 = ['Tyrone','Sligo','Down','Tipperary','Donegal','Clare','Louth','Leitrim','Dublin'];
-
-		for(var i=0, l = countyQs.length; i < l; i++){
-	    	console.log("Question -"+countyQs[i]+ " Answer -"+countyAns[i]+ " Multiple choice 1 -"+countyM1[i]+ " Multiple choice 2 -"+countyM2[i]+ " Multiple choice 3 -"+countyM3[i]);
-	    	var quiz_id = 1;
-	    	var question = countyQs[i];
-	    	var answer = countyAns[i];
-	    	var mChoice1 = countyM1[i];
-	    	var mChoice2 = countyM2[i];
-	    	var mChoice3 = countyM3[i];
-	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
-		}
-		
-	alert("added");	
-	var mountainQs = 	['What is the Highest Mountain in Ireland ?',
-						'What is the Highest Mountain in Ulster ?',
-						'What is the Highest Mountain in Leinster ?',
-						'What is the Highest Mountain in Connacht ?',
-						'What is the Highest Mountain in Munster ?'];
-					
-	var mountainAns = 	['Carrauntoohil','Slieve Donard','Lugnaquilla','Mweelrea','Carrauntoohil'];
-	
-	var mountainM1 = 	['Slieve Donard','Slieve Bearnagh','Mount Leinster','Croagh Patrick','Mullaghmore'];
-	
-	var mountainM2 = 	['Galtymore','Divis','Maulin','Ben Gorm','Sugarloaf'];
-
-	var mountainM3 = 	['Cnoc na Péiste','Slemish','Slieveboy','Slievemore','Knockboy'];
-
-
-
-		for(var i=0, l = mountainQs.length; i < l; i++){
-	    	console.log("Question -"+mountainQs[i]+ " Answer -"+mountainAns[i]+ " Multiple choice 1 -"+mountainM1[i]+ " Multiple choice 2 -"+mountainM2[i]+ " Multiple choice 3 -"+mountainM3[i]);	    	
-	    	var quiz_id = 1;
-	    	var question = mountainQs[i];
-	    	var answer = mountainAns[i];
-	    	var mChoice1 = mountainM1[i];
-	    	var mChoice2 = mountainM2[i];
-	    	var mChoice3 = mountainM3[i];
-	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
-		}
-		
-		alert("added");	
-
-	var riverQs = ['Which River flows into the largest lake in Northern Ireland ?',
+					'Least populated County?',
+					'What is the Highest Mountain in Ireland ?',
+					'What is the Highest Mountain in Ulster ?',
+					'What is the Highest Mountain in Leinster ?',
+					'What is the Highest Mountain in Connacht ?',
+					'What is the Highest Mountain in Munster ?',
+					'Which River flows into the largest lake in Northern Ireland ?',
 					'Name which river did the famous battle in 1690 take place involving William of Orange ?',
 					'Name the river that flows through the City of Derry?',
-					'Name the river that flows through Belfast?',
+					'Belfast is built on what river?',
 					'Name the river that flows through Cork?',
 					'Which famous river runs through Dublin?',
-					'Which River is the Longest in Ireland ?'];
+					'Which River is the Longest in Ireland ?',
+					'Where is the giants causeway located?',
+					'In what county is Mizen Head?',
+					'Rathlin Island lies off the coast of what Ulster County?',
+					'What is the second smallest county in Ireland?', 
+					'In what city is St. Canice’s cathedral ?',
+					'Off what county is Tory Island?',
+					'In what county are the Cliffs of Moher?',
+					'In what county is the Cooley Peninsula?',
+					'In what county are the Blue Stack Mountains?',
+					'Slieve Donard is the highest peak in what mountain range?'];
 					
-	var riverAns = ['River Bann','River Boyne','River Foyle','River Lagan','River Lee','River Liffey','River Shannon'];
-	
-	var riverM1 = ['River Foyle','Arney River','River Moyola','River Bann','Munster Blackwater','Inch River','River Barrow'];
-	var riverM2 = ['River Erne','River Moy','River Bann','Six Mile Water','River Roe','Devlin River','River Suir'];
-	var riverM3 = ['River Lagan','River Nore','River Derry','River Bush','River Boyne','River Bann','River Bann'];
+	var geographyAns = ['Cork',
+						'Louth',
+						'Donegal',
+						'Down',
+						'Cork',
+						'Kerry',
+						'Roscommon',
+						'Dublin',
+						'Leitrim',
+						'Carrauntoohil',
+						'Slieve Donard',
+						'Lugnaquilla',
+						'Mweelrea',
+						'Carrauntoohil',
+						'River Bann',
+						'River Boyne',
+						'River Foyle',
+						'River Lagan',
+						'River Lee',
+						'River Liffey',
+						'River Shannon',
+						'Antrim',
+						'Cork',
+						'Antrim',
+						'Carlow',
+						'Kilkenny',
+						'Donegal',
+						'Clare',
+						'Louth',
+						'Donegal',
+						'Mourne Mts'];
+					
+	var geographyM1 = ['Mayo',
+						'Clare',
+						'Dery','Dublin',
+						'Kerry',
+						'Galway',
+						'Longford',
+						'Antrim',
+						'Meath',
+						'Slieve Donard',
+						'Slieve Bearnagh',
+						'Mount Leinster',
+						'Croagh Patrick',
+						'Mullaghmore',
+						'River Foyle',
+						'Arney River',
+						'River Moyola',
+						'River Bann',
+						'Munster Blackwater',
+						'Inch River',
+						'River Barrow',
+						'Donegal',
+						'Donegal',
+						'Derry',
+						'Louth',
+						'Derry',
+						'Kerry',
+						'Galway',
+						'Wexford',
+						'Derry',
+						'Sperrin Mts'];
+					
+	var geographyM2 = ['Dublin',
+						'Laois',
+						'Sligo',
+						'Wexford',
+						'Meath',
+						'Dublin',
+						'Wexford',
+						'Cork',
+						'Derry',
+						'Galtymore',
+						'Divis',
+						'Maulin',
+						'Ben Gorm',
+						'Sugarloaf',
+						'River Erne',
+						'River Moy',
+						'River Bann',
+						'Six Mile Water',
+						'River Roe',
+						'Devlin River',
+						'River Suir',
+						'Galway',
+						'Dublin',
+						'Donegal',
+						'Mayo',
+						'Armagh',
+						'Antrim',
+						'Sligo',
+						'Limerick',
+						'Kerry',
+						'Antrim Plateau'];
+					
+	var geographyM3 = ['Tyrone',
+						'Sligo',
+						'Down',
+						'Tipperary',
+						'Donegal',
+						'Clare',
+						'Louth',
+						'Leitrim',
+						'Dublin',
+						'Cnoc na Péiste',
+						'Slemish',
+						'Slieveboy',
+						'Slievemore',
+						'Knockboy',
+						'River Lagan',
+						'River Nore',
+						'River Derry',
+						'River Bush',
+						'River Boyne',
+						'River Bann',
+						'River Bann',
+						'Down',
+						'Mayo',
+						'Down',
+						'Tyrone',
+						'Lisburn',
+						'Wicklow',
+						'Westmeath',
+						'Sligo',
+						'Down',
+						'MacGillycuddy Reeks'];
 
-		for(var i=0, l = riverQs.length; i < l; i++){
-			
-			console.log("Question -"+riverQs[i]+ " Answer -"+riverAns[i]+ " Multiple choice 1 -"+riverM1[i]+ " Multiple choice 2 -"+riverM2[i]+ " Multiple choice 3 -"+riverM3[i]);	    	
+		for(var i=0, l = geographyQs.length; i < l; i++){
+	    	console.log("Question -"+geographyQs[i]+ " Answer -"+geographyAns[i]+ " Multiple choice 1 -"+geographyM1[i]+ " Multiple choice 2 -"+geographyM2[i]+ " Multiple choice 3 -"+geographyM3[i]);
 	    	var quiz_id = 1;
-	    	var question = riverQs[i];
-	    	var answer = riverAns[i];
-	    	var mChoice1 = riverM1[i];
-	    	var mChoice2 = riverM2[i];
-	    	var mChoice3 = riverM3[i];
+	    	var question = geographyQs[i];
+	    	var answer = geographyAns[i];
+	    	var mChoice1 = geographyM1[i];
+	    	var mChoice2 = geographyM2[i];
+	    	var mChoice3 = geographyM3[i];
 	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
 		}
-	alert("added");	
+
 
 }
+
+function History_quiz_questions(){
+//Populating County Questions
+	var historyQs = ['When did St Patrick arrive in Ireland ?',
+					'In what year did the Pope visit Ireland?',
+					'In what year did Ireland join the E.U.?',
+					'In what city is there an area known as “The Bogside.”?',
+					'Where was the 1947 All Ireland Football final held?',
+					'The Battle of the Boyne took place on July 1st in what year?',
+					'In what year did the Normans invade Ireland?',
+					'In what town was the G.A.A. founded?',
+					'In what year was the GAA founded?',
+					'In what year was the Titanic built in Belfast?',
+					'In what county are the passage graves at Newgrange?'];
+					
+	var historyAns = 	['432 AD',
+						'1979',
+						'1973',
+						'Derry',
+						'New York',
+						'1690',
+						'1169',
+						'Thurles',
+						'1884',
+						'1912',
+						'Meath'];
+					
+	var historyM1 = 	['1800 AD',
+						'1905',
+						'1990',
+						'Belfast',
+						'London',
+						'1960',
+						'1684',
+						'Athlone',
+						'1205',
+						'1802',
+						'Louth'];
+					
+	var historyM2 = 	['1014 AD',
+						'1950',
+						'1960',
+						'Cork',
+						'Amsterdam',
+						'1196',
+						'1763',
+						'Dungiven',
+						'2009',
+						'1967',
+						'Roscommon'];
+					
+	var historyM3 = 	['13 AD',
+						'2001',
+						'2003',
+						'Dublin',
+						'Paris',
+						'1906',
+						'1894',
+						'Omagh',
+						'1647',
+						'2010',
+						'Tipperary'];
+
+		for(var i=0, l = historyQs.length; i < l; i++){
+	    	console.log("Question -"+historyQs[i]+ " Answer -"+historyAns[i]+ " Multiple choice 1 -"+historyM1[i]+ " Multiple choice 2 -"+historyM2[i]+ " Multiple choice 3 -"+historyM3[i]);
+	    	var quiz_id = 3; //history id number
+	    	var question = historyQs[i];
+	    	var answer = historyAns[i];
+	    	var mChoice1 = historyM1[i];
+	    	var mChoice2 = historyM2[i];
+	    	var mChoice3 = historyM3[i];
+	    	addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id);    	
+		}
+		
+	
+
+}
+
 
 function addToQuiz_Questions(question, answer, mChoice1, mChoice2, mChoice3, quiz_id){
 			    	 mydb.transaction(function (t) {
 				     t.executeSql('INSERT INTO quiz_questions (question, question_answer, mChoice1, mChoice2, mChoice3, quiz_id) VALUES ("'+question+'","'+answer+'","'+mChoice1+'","'+mChoice2+'","'+mChoice3+'",'+quiz_id+')');        
 					});}
 
-/*
-function load_answer_bank(){
-	var counties = ['Cork','Louth','Donegal','Down','Kerry','Roscommon','Dublin','Leitrim','Derry','Tyrone','Mayo','Galway','Meath','Westmeath','Limerick','Antrim'];
-		for(var i=0, l = counties.length; i < l; i++){
-	 //   	console.log(counties[i]);
-	    	var id = 1;
-	    	var answer = counties[i];
-	    	addToAnswerBank(id, answer);    	
-		}
 
-	var mountains = ['Carrauntoohil','Slieve Donard','Lugnaquilla','Mweelrea','Galtymore','Mount Leinster','Mount Errigal','Brandon Hill','Sawel Mountain','Slieve Gullion'];
-		for(var i=0, l = mountains.length; i < l; i++){
-	 //   	console.log(mountains[i]);
-	    	var id = 2;
-	    	var answer = mountains[i];
-	    	addToAnswerBank(id, answer);    	
-		}
-		
-	var rivers = ['River Bann','River Boyne','River Foyle','River Lagan','River Lee','River Liffey','River Shannon','River Swilly','River Erne','River Blackwater','River Nore','River Suir','River Barrow'];
-		for(var i=0, l = rivers.length; i < l; i++){
-	//		    	console.log(rivers[i]);
-			    	var id = 3;
-			    	var answer = rivers[i];
-			    	addToAnswerBank(id, answer);    	
-				}
-}
-
-
-
-function addToAnswerBank(id, answer){
-			    	 mydb.transaction(function (t) {
-				     t.executeSql('INSERT INTO answer_bank (answer_bank_id, answer) VALUES ('+id+',"'+answer+'")');        
-					});}
-
-*/
 
 
 
