@@ -274,18 +274,21 @@ submitScrore(count);
 
 function submitScrore(count)
 {
-	
+
  //check to ensure the mydb object has been created
     if (mydb) {
         //get the values of the label text inputs
 		var user = PlayerName;
-		quiz_id;
+		var qi = quiz_id;
 		var score = count;
 		var date = new Date();
+		var dateString = (new Date()).toLocaleDateString();
+		
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function (t) {
+            	alert(user+ quiz_id +score+ dateString);
                 //      alert(fname+sname+dob+position);
-                t.executeSql("INSERT INTO users (user, quiz_id, score, date) VALUES (?, ?, ?, ?)", [user, quiz_id, score, date]);
+                t.executeSql("INSERT INTO scores (user, quiz_id, score, date) VALUES (?, ?, ?, ?)", [user, qi, score, dateString]);
                 outputUsers();
                 fname.value = "";
                 sname.value = "";

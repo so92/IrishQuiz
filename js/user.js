@@ -63,6 +63,16 @@ function addUser() {
     }
 }
 
+
+function newUser(){
+	
+	 $('#NewUserHolder').fadeToggle();
+}
+
+function existingUsers(){
+	$('#ExistingUserHolder').fadeToggle();
+}
+
 //function to remove a players from the database, passed the row id as it's only parameter
 function deleteUser(id) {
     //check to ensure the mydb object has been created

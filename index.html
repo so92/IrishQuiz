@@ -14,10 +14,12 @@
 	
 	<body>
 		
-		
+<div id="page">	
 		
 	<div id="UserSelect">
-		<div id="NewUser">
+		
+		<button type="button" id="newUser" onclick="newUser();">New User</button>
+		<div id="NewUserHolder" style="display: none;">
 			 <h3><p><b>New User ? enter details</b></p></h3>
 		    <label>Forname:</label>
 		    <input type="text" id="fname" data-mini="true"/>
@@ -25,9 +27,41 @@
 		    <input type="text" id="sname" data-mini="true"/>
 		    <button type="button" id="adduser" onclick="addUser();">Add User</button>
 	    </div>
-	    <div id="ExistingUser">
+	    
+	    <button type="button" id="existingUsers" onclick="existingUsers();">Existing Users</button>
+	    <div id="ExistingUserHolder" style="display: none;">
 			 <h3>Existing Users</h3>
 	   <ul data-role="listview" id="userlist"></ul>
+	   
+	   	   	   	<form>
+  			  <input id="matchTable-input" data-type="search">
+		</form>
+<table data-role="table" id="matchTable" data-filter="true" data-input="#matchTable-input" class="ui-responsive ui-shadow">
+    <thead>
+        <tr>
+            <th>Opposition</th>
+            <th>Date</th>
+            <th>Delete</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        </thead>
+        
+        <tbody>
+            
+        </tbody>
+    </table>
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	    </div>
 	</div>	
 	
@@ -52,7 +86,9 @@
 
 		 <div id= "answers"></div>
 	
-	</div>	
+	</div>
+	
+</div>		
 	
 	<script src="js/database_init.js"></script>	
 	<script src="js/questions.js"></script>	

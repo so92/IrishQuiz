@@ -10,7 +10,7 @@ function initDB() {
     function createTables() {
         mydb.transaction(function (t) {
            t.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY ASC, fname TEXT, sname TEXT)");
-           t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user TEXT, quiz_id INTEGER, score INTEGER, date DATE)");
+           t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user TEXT, quiz_id INTEGER, score INTEGER, date STRING)");
            // t.executeSql("CREATE TABLE IF NOT EXISTS positions (number INTEGER, position TEXT)");
            // t.executeSql("CREATE TABLE IF NOT EXISTS myTeams (id_match INTEGER, position TEXT, id_players, FOREIGN KEY(id_match) REFERENCES match(id),FOREIGN KEY(id_players) REFERENCES players(id))");
            // t.executeSql("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY ASC, xC INT, yC INT, type TEXT, time TEXT, id_match INTEGER, half TEXT, FOREIGN KEY(id_match) REFERENCES match(id))");
@@ -18,7 +18,7 @@ function initDB() {
            //	t.executeSql("CREATE TABLE IF NOT EXISTS answer_bank (id INTEGER PRIMARY KEY ASC, answer_bank_id INTEGER, answer TEXT)");
        		t.executeSql("CREATE TABLE IF NOT EXISTS quiz_questions (id INTEGER PRIMARY KEY ASC, question TEXT, question_answer TEXT, mChoice1 TEXT, mChoice2 TEXT, mChoice3 TEXT, quiz_id INTEGER)");
 
-			//t.executeSql("DROP TABLE scores");   
+			//t.executeSql("DROP TABLE quiz_questions");   
 			
         });
     }
@@ -32,8 +32,8 @@ console.log("database init");
 
 //load_answer_bank();
 //county_maps();
-//Geography_quiz_questions();
-//History_quiz_questions();
+Geography_quiz_questions();
+History_quiz_questions();
 
 /*
  * Quiz Ids
