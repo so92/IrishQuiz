@@ -15,12 +15,18 @@ function outputUsers() {
 //function to output the list of players in the database
 function updateUserList(transaction, results) {
     //initialise the listitems variable
-    var listitems = "";
+ //   var listitems = "";
     //get the player list holder ul
-    var listholder = document.getElementById("userlist");
+ //   var listholder = document.getElementById("userlist");
+
+	var tableRef = document.getElementById("userTable").getElementsByTagName('tbody')[0];
+
+	tableRef.innerHTML = "";
+
+
 
     //clear players list ul
-    listholder.innerHTML = "";
+    
 
     var i;
     //Iterate through the results
@@ -28,8 +34,35 @@ function updateUserList(transaction, results) {
         //Get the current row
         var row = results.rows.item(i);
 
-        listholder.innerHTML += "<li>" + "" + row.fname + " " + row.sname +  "<a href='javascript:void(0);' onclick='deleteUser(" + row.id + ");'><img src='images/delete.png'/></a>"+  "<a onclick='selectUser(" + row.id + ");'>select user</a>";
 
+
+      		var newRow   = tableRef.insertRow(tableRef.rows.length);
+			// Insert a cell in the row at index 0
+			var newCell0  = newRow.insertCell(0);
+			var newCell1  = newRow.insertCell(1);
+			var newCell2  = newRow.insertCell(2);
+
+  			
+
+			
+			// Append a text node to the cell
+			var name  = document.createTextNode(row.fname + " " + row.sname);		
+			var deleteButton = "<a href='javascript:void(0);' onclick='deleteUser(" + row.id + ");'><img src='images/delete.png'/></a>";
+  			var proceed  = "<a onclick='selectUser(" + row.id + ");'>select user</a>";
+  			
+  			
+			newCell0.appendChild(name);
+			newCell1.innerHTML = deleteButton;
+			newCell2.innerHTML = proceed;
+
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
 
@@ -41,36 +74,60 @@ function addUser() {
         //get the values of the label text inputs
         var fname = document.getElementById("fname").value;
         var sname = document.getElementById("sname").value;
-        
+
 
         //Test to ensure that the user has entered all required fields
         if (fname !== "" && sname !== "") {
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function (t) {
                 //      alert(fname+sname+dob+position);
-                t.executeSql("INSERT INTO users (fname, sname) VALUES (?, ?)", [fname, sname]);
-                outputUsers();
-                fname.value = "";
-                sname.value = "";
-
-                //     alert("Added Sucesfully");
+    			t.executeSql('INSERT INTO users (fname, sname) VALUES (?, ?)', [fname, sname], querySuccess);
+    			
             });
+
         } else {
             alert("You must enter ALL DETAILS!");
         }
     } else {
         alert("db not found, your browser does not support web sql!");
     }
+        document.getElementById("fname").value ="";
+        document.getElementById("sname").value ="";
+        outputUsers();
+
 }
 
+			function querySuccess(t, results) {
+			selectUser(results.insertId);
+			return;
+			
+			}
 
 function newUser(){
 	
 	 $('#NewUserHolder').fadeToggle();
+	 $('#ExistingUserButton').fadeToggle();
+	 
+	 var button = document.getElementById("NewUserButton");
+	 if(button.innerHTML == "New User"){
+		button.innerHTML= "Return to Main Menu";
+	}
+	else if(button.innerHTML == "Return to Main Menu"){
+		button.innerHTML= "New User";
+	}
 }
 
 function existingUsers(){
 	$('#ExistingUserHolder').fadeToggle();
+	$('#NewUserButton').fadeToggle();
+	
+	var button = document.getElementById("ExistingUserButton");
+	 if(button.innerHTML == "Existing Users"){
+		button.innerHTML= "Return to Main Menu";
+	}
+	else if(button.innerHTML == "Return to Main Menu"){
+		button.innerHTML= "Existing Users";
+	}
 }
 
 //function to remove a players from the database, passed the row id as it's only parameter
@@ -101,7 +158,7 @@ function selectUser(id) {
 									for (var i = 0, item = null; i < result.rows.length; i++) {	
 										var row = result.rows.item(i);	
 										PlayerName = row.fname + " " +row.sname;
-										var holder = "Welcome "+PlayerName;
+										var holder = "<h1>Welcome "+PlayerName+"</h1>";
 										document.getElementById("PlayerNameHolder").innerHTML = holder;
 										//alert(PlayerName);
 									}	
@@ -117,6 +174,13 @@ function selectUser(id) {
    
    
 }
+
+function ReturnToMainMenu(){
+	$('#PlayQuiz').toggle();
+    $('#UserSelect').fadeToggle();
+}
+
+
 
 
 

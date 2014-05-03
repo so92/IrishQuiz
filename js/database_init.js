@@ -1,5 +1,8 @@
 var mydb;
 
+
+
+
 function initDB() {
     function openDB() {
         //Create the database the parameters are 1. the database name 2.version number 3. a description 4. the size of the database (in bytes) 1024 x 1024 = 1MB
@@ -30,10 +33,14 @@ initDB();
 //prePopulate();
 console.log("database init");
 
+
+
+
+
 //load_answer_bank();
 //county_maps();
-Geography_quiz_questions();
-History_quiz_questions();
+//Geography_quiz_questions();
+//History_quiz_questions();
 
 /*
  * Quiz Ids

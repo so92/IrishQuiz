@@ -87,6 +87,12 @@ function showCounties(){
 function showQuestions(quizType)
 {		var questions;
 	
+		//	Hiding buttons and numerous other items
+		$('#QuizMenu').toggle();
+
+	
+	
+	
 		quiz_id = quizType;
 		
 		var random = (Math.random() + 1) * 1111111;
@@ -151,23 +157,27 @@ function showQuestions(quizType)
 										listholder.innerHTML+=("<input type='radio' value='"+questions[2]+"' name='question_"+i+"'>c) " +questions[2]+".<br>");
 										listholder.innerHTML+=("<input type='radio' value='"+questions[3]+"' name='question_"+i+"'>d) " +questions[3]+".<br>");
 										
+										var exp = "'" + question + "'";
+										
+										listholder.innerHTML+='    <img src="http://www.edgarcayce.org/Meditation/images/speaker_icon.gif" class="text-to-speech" alt="Click this image to read the text" />';
+										
 										var hidePrevious = i;
 										var showNext;
 										
 										if(i<1){
-										listholder.innerHTML+=("<button id='nextQ_"+(i+1)+"'>Next Question</button>");
+										listholder.innerHTML+=("<button class='ButtonNext' id='nextQ_"+(i+1)+"'>Next Question</button>");
 									//	document.getElementById('question_0').style.visibility="visible";
 										$('#question_'+i).toggle();
 										showNext = 1;
 										
 										}
 										else if(i<9){
-										listholder.innerHTML+=("<button id='nextQ_"+(i+1)+"'>Next Question</button>");
+										listholder.innerHTML+=("<button class='ButtonNext' id='nextQ_"+(i+1)+"'>Next Question</button>");
 										showNext = Number(i)+1;
 										}
 										else
 										{
-										listholder.innerHTML+=("<button id='nextQ_"+(i+1)+"' onclick='checkAnswers()'>Finish Quiz</button>");
+										listholder.innerHTML+=("<button class='ButtonNext' id='nextQ_"+(i+1)+"' onclick='checkAnswers()'>Finish Quiz</button>");
 										showNext = 10;
 										}
 										
@@ -265,7 +275,7 @@ function checkAnswers()
 
     
    
-        alert(PlayerName+ " you Scored " +count);
+      //  alert(PlayerName+ " you Scored " +count);
 showAnswers();
 submitScrore(count);
        
@@ -312,5 +322,15 @@ function showAnswers(){
 		for(i=0;i<correctAnswers.length;i++){
 		listholder.innerHTML+=("<li>"+globalQs[i]+" "+correctAnswers[i]+"</li>");
 		}
+		listholder.innerHTML+= '<button id="ShowLeaderBoard" onclick="showLeaderBoard_AQ();">Show Leaderboard</button>';
+		listholder.innerHTML+= '<button id="ReturnToQuizMenu" onclick="returnToQuizMenu();">Return to Quiz Menu</button>';
 }
+
+function returnToQuizMenu(){
+	$('#answers').toggle();
+	$('#QuizMenu').fadeToggle();
+
+}
+
+
 
