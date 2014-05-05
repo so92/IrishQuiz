@@ -12,7 +12,7 @@ function initDB() {
 
     function createTables() {
         mydb.transaction(function (t) {
-        	t.executeSql("DROP TABLE quiz_questions");
+      //  	t.executeSql("DROP TABLE quiz_questions");
         	
            t.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY ASC, fname TEXT, sname TEXT)");
            t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user TEXT, quiz_id INTEGER, score INTEGER, date STRING)");
@@ -41,14 +41,17 @@ console.log("database init");
 
 //load_answer_bank();
 //county_maps();
+sampleuser();
 Geography_quiz_questions();
 History_quiz_questions();
-sampleuser();
+
 
  function sampleuser() {
         mydb.transaction(function (t) {
-     
-       		t.executeSql("INSERT INTO users (fname, sname) VALUES ('Sean','Owens')");
+        	
+        	t.executeSql("DROP TABLE quiz_questions");   
+			t.executeSql("CREATE TABLE IF NOT EXISTS quiz_questions (id INTEGER PRIMARY KEY ASC, question TEXT, question_answer TEXT, mChoice1 TEXT, mChoice2 TEXT, mChoice3 TEXT, quiz_id INTEGER)");
+
 			
         });
     }
