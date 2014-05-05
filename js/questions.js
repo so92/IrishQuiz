@@ -115,6 +115,15 @@ function showQuestions(quizType)
 										listholder.innerHTML = "";	
 													 
 					                	var row = result.rows.item(i);	
+					                	
+					                	for(var z = 0; z<globalQs[i-1]; z++)
+					                	{
+					                		if(globalQs[i] == globalQs[z]){
+					                			alert("here");
+					                		}
+					                	}
+					                	
+					          
 					                				                	
 					                	var question = row.question;		           	
 					                	var answer = row.question_answer;
@@ -152,14 +161,14 @@ function showQuestions(quizType)
 									   
 					         		 	listholder.innerHTML+=("<div class = 'question'><h3>"+question+"<h3></div>");
 					         		 	listholder.innerHTML+=("<div class = 'answers'");
-										listholder.innerHTML+=("<input type='radio' value='"+questions[0]+"' name='question_"+i+"'>a) " +questions[0]+".<br>");
-										listholder.innerHTML+=("<input type='radio' value='"+questions[1]+"' name='question_"+i+"'>b) " +questions[1]+".<br>");
-										listholder.innerHTML+=("<input type='radio' value='"+questions[2]+"' name='question_"+i+"'>c) " +questions[2]+".<br>");
-										listholder.innerHTML+=("<input type='radio' value='"+questions[3]+"' name='question_"+i+"'>d) " +questions[3]+".<br>");
+
+										listholder.innerHTML+=("<input type='radio' value='"+questions[0]+"' name='question_"+i+"'><h6>a) " +questions[0]+".</h6><br>");
+										listholder.innerHTML+=("<input type='radio' value='"+questions[1]+"' name='question_"+i+"'><h6>b) " +questions[1]+".</h6><br>");
+										listholder.innerHTML+=("<input type='radio' value='"+questions[2]+"' name='question_"+i+"'><h6>c) " +questions[2]+".</h6><br>");
+										listholder.innerHTML+=("<input type='radio' value='"+questions[3]+"' name='question_"+i+"'><h6>d) " +questions[3]+".</h6><br>");
 										
 										var exp = "'" + question + "'";
 										
-										listholder.innerHTML+='    <img src="http://www.edgarcayce.org/Meditation/images/speaker_icon.gif" class="text-to-speech" alt="Click this image to read the text" />';
 										
 										var hidePrevious = i;
 										var showNext;

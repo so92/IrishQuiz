@@ -111,9 +111,11 @@ function newUser(){
 	 var button = document.getElementById("NewUserButton");
 	 if(button.innerHTML == "New User"){
 		button.innerHTML= "Return to Main Menu";
+		button.style.backgroundColor="red";
 	}
 	else if(button.innerHTML == "Return to Main Menu"){
 		button.innerHTML= "New User";
+		button.style.backgroundColor="limegreen";
 	}
 }
 
@@ -124,9 +126,11 @@ function existingUsers(){
 	var button = document.getElementById("ExistingUserButton");
 	 if(button.innerHTML == "Existing Users"){
 		button.innerHTML= "Return to Main Menu";
+		button.style.backgroundColor="red";
 	}
 	else if(button.innerHTML == "Return to Main Menu"){
 		button.innerHTML= "Existing Users";
+		button.style.backgroundColor="darksalmon";
 	}
 }
 

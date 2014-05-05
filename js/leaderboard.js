@@ -54,7 +54,14 @@ function updateLeaderboard(transaction, results) {
 			var user  = document.createTextNode(row.user);		
 			var score = document.createTextNode(row.score);
   			var date  = document.createTextNode(row.date);
-  			var quiz  = document.createTextNode(row.quiz_id);
+  			var quiz;
+  			if (row.quiz_id == 1){
+  				 quiz  = document.createTextNode("Geography Quiz");
+  			}
+  			else if (row.quiz_id == 3){
+  				 quiz  = document.createTextNode("History Quiz");
+  			}
+  			
   			
 			newCell0.appendChild(user);
 			newCell1.appendChild(score);

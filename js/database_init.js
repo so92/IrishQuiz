@@ -12,6 +12,7 @@ function initDB() {
 
     function createTables() {
         mydb.transaction(function (t) {
+        	t.executeSql("DROP TABLE quiz_questions");
            t.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY ASC, fname TEXT, sname TEXT)");
            t.executeSql("CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY ASC, user TEXT, quiz_id INTEGER, score INTEGER, date STRING)");
            // t.executeSql("CREATE TABLE IF NOT EXISTS positions (number INTEGER, position TEXT)");
@@ -39,8 +40,8 @@ console.log("database init");
 
 //load_answer_bank();
 //county_maps();
-//Geography_quiz_questions();
-//History_quiz_questions();
+Geography_quiz_questions();
+History_quiz_questions();
 
 /*
  * Quiz Ids
