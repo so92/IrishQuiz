@@ -89,8 +89,12 @@ function showQuestions(quizType)
 	
 		//	Hiding buttons and numerous other items
 		$('#QuizMenu').toggle();
-
-	
+		
+		var answers = document.getElementById("answers");
+		var scores = document.getElementById("playersScore");
+		
+		 answers.style.display="none";
+		 scores.style.display="none";
 	
 	
 		quiz_id = quizType;
@@ -116,12 +120,7 @@ function showQuestions(quizType)
 													 
 					                	var row = result.rows.item(i);	
 					                	
-					                	for(var z = 0; z<globalQs[i-1]; z++)
-					                	{
-					                		if(globalQs[i] == globalQs[z]){
-					                			alert("here");
-					                		}
-					                	}
+					               
 					                	
 					          
 					                				                	
@@ -171,7 +170,7 @@ function showQuestions(quizType)
 										
 										
 										var hidePrevious = i;
-										var showNext;
+										var showNext = "";
 										
 										if(i<1){
 										listholder.innerHTML+=("<button class='ButtonNext' id='nextQ_"+(i+1)+"'>Next Question</button>");
@@ -186,7 +185,7 @@ function showQuestions(quizType)
 										}
 										else
 										{
-										listholder.innerHTML+=("<button class='ButtonNext' id='nextQ_"+(i+1)+"' onclick='checkAnswers()'>Finish Quiz</button>");
+										listholder.innerHTML+=("<button class='ButtonNext' id='endQuizButton' onclick='checkAnswers()'>Finish Quiz</button>");
 										showNext = 10;
 										}
 										
@@ -194,7 +193,7 @@ function showQuestions(quizType)
 										
 										  
 										navigationB(showNext, hidePrevious);	
-										navigationF(showNext);	
+							//			navigationF(showNext);	
 										
 										//alert(boxid);
 										
@@ -218,8 +217,24 @@ function showQuestions(quizType)
 	function navigationB(showNext, hidePrevious)
 	{
 		$('#nextQ_'+showNext).click(function () {
+												$('#question_'+showNext).toggle();
 										        $('#question_'+hidePrevious).toggle();
 										    });
+										    
+			$('#endQuizButton').click(function () {
+												
+										        $('#question_'+hidePrevious).toggle();
+										       		var answers = document.getElementById("answers");
+		var scores = document.getElementById("playersScore");
+		
+		 answers.style.display="block";
+		 scores.style.display="block";
+//	queryLeaderboard();
+										    });
+										    
+										    
+										    
+		
 	}
 
 	
@@ -306,7 +321,8 @@ function submitScrore(count)
 		var date = new Date();
 		var dateString = (new Date()).toLocaleDateString();
 		var scoreHolder = document.getElementById("playersScore");
-		scoreHolder.innerHTML+= user + " you scored "+score;
+		
+		scoreHolder.innerHTML = user + " you scored "+score;
 		
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function (t) {
@@ -341,10 +357,12 @@ function showAnswers(){
 }
 
 function returnToQuizMenu(){
-	$('#answers').toggle();
-	$('#playersScore').toggle();
+	
 	$('#QuizMenu').fadeToggle();
-
+		var scores = document.getElementById("playersScore");
+		
+		 answers.style.display="none";
+		 scores.style.display="none";
 }
 
 

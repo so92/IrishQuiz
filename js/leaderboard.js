@@ -12,6 +12,7 @@ function showLeaderboard(){
 function showLeaderBoard_AQ(){
 	$('#answers').toggle();
 	$('#playersScore').toggle();
+	
 	queryLeaderboard();
 }
 
