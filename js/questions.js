@@ -285,15 +285,18 @@ function checkAnswers()
     
    
       //  alert(PlayerName+ " you Scored " +count);
-showAnswers();
 submitScrore(count);
+showAnswers();
+
        
     
 }
 
+
+
 function submitScrore(count)
 {
-
+	
  //check to ensure the mydb object has been created
     if (mydb) {
         //get the values of the label text inputs
@@ -302,10 +305,12 @@ function submitScrore(count)
 		var score = count;
 		var date = new Date();
 		var dateString = (new Date()).toLocaleDateString();
+		var scoreHolder = document.getElementById("playersScore");
+		scoreHolder.innerHTML+= user + " you scored "+score;
 		
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function (t) {
-            	alert(user+ quiz_id +score+ dateString);
+            	//alert(user+ quiz_id +score+ dateString);
                 //      alert(fname+sname+dob+position);
                 t.executeSql("INSERT INTO scores (user, quiz_id, score, date) VALUES (?, ?, ?, ?)", [user, qi, score, dateString]);
                 outputUsers();
@@ -337,6 +342,7 @@ function showAnswers(){
 
 function returnToQuizMenu(){
 	$('#answers').toggle();
+	$('#playersScore').toggle();
 	$('#QuizMenu').fadeToggle();
 
 }
