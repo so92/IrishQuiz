@@ -66,9 +66,12 @@
 		<div id="QuizMenu">
 		<div id="PlayerNameHolder"></div>
  		<button type="button" id="GeographyQuiz" class="showQuestions" onclick="showQuestions(1);">Geography Quiz</button>
+ 		<button type="button" id="GeogLeaderBoardButton" class="showLB" onclick="showLeaderboard(1);">Geography Leaderboard</button>
+
   		<button type="button" id="HistoryQuiz" class="showQuestions" onclick="showQuestions(3);">History Quiz</button>
- 		<button type="button" id="CountiesQuiz" class="showQuestions" onclick="showCounties();">Name that County Quiz</button>
- 		<button type="button" id="LeaderBoardButton" class="showQuestions" onclick="showLeaderboard();">Show Leaderboard</button>
+ 		<button type="button" id="HistLeaderBoardButton" class="showLB" onclick="showLeaderboard(3);">History Leaderboard</button>
+
+ 		<button type="button" id="LeaderBoardButton" class="showLB" onclick="showLeaderboard(99);">My Scores</button>
 		<button type="button" id="ReturnToMainMenu" class="showQuestions" onclick="ReturnToMainMenu();">Return to Main Menu</button>
  		</div>
  		
@@ -87,9 +90,12 @@
 		 	<div id= "answers"></div>
 		 	
 		 	<div id= "leaderboard" style="display: none;">
+		 		<H1>Leaderboard</H1>
 		 	<form>
   			  <input id="leaderTable-input" data-type="search">
 			</form>
+	<div id="LeaderBoardHolder">	
+			
 		<table data-role="table" id="leaderTable" data-filter="true" data-input="#leaderTable-input" class="ui-responsive ui-shadow">
 		    <thead>
 		        <tr>
@@ -104,6 +110,9 @@
 		            
 		        </tbody>
 		    </table>
+		    
+		 </div>	   
+		    
 	   	<button type="button" id="ReturnToQuizMenu" class="showQuestions" onclick="ReturnToQuizMenu_LB();">Return to Main Menu</button>
 
 		 		

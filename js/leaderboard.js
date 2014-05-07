@@ -4,24 +4,53 @@ function ReturnToQuizMenu_LB(){
 
 }
 
-function showLeaderboard(){
+function showLeaderboard(which){
 	$('#QuizMenu').toggle();
-	queryLeaderboard();
+
+	var SQL;
+	
+	if (which == 1){
+		SQL = "SELECT * FROM scores WHERE quiz_id = 1 ORDER BY score DESC";
+	}
+	else if (which == 3){
+		SQL = "SELECT * FROM scores WHERE quiz_id = 3 ORDER BY score DESC";
+	}
+	else if (which == 99){
+		SQL = "SELECT * FROM scores WHERE user = '"+PlayerName+ "' ORDER BY score DESC";
+	}
+	
+	
+	
+	queryLeaderboard(SQL);
 }
 
-function showLeaderBoard_AQ(){
+function showLeaderBoard_AQ(which){
 	$('#answers').toggle();
 	$('#playersScore').toggle();
 	
-	queryLeaderboard();
+	var SQL;
+	
+	if (which == 1){
+		SQL = "SELECT * FROM scores WHERE quiz_id = 1 ORDER BY score DESC";
+	}
+	else if (which == 3){
+		SQL = "SELECT * FROM scores WHERE quiz_id = 3 ORDER BY score DESC";
+	}
+	else if (which == 99){
+		SQL = "SELECT * FROM scores WHERE user = '"+PlayerName+ "' ORDER BY score DESC";
+	}
+	
+	queryLeaderboard(SQL);
 }
 
-function queryLeaderboard() {
+function queryLeaderboard(SQL) {
+	
+	
     //check to ensure the mydb object has been created
     if (mydb) {
         //Get all the players from the database with a select statement, set outputPlayerList as the callback function for the executeSql command
         mydb.transaction(function (t) {
-            t.executeSql("SELECT * FROM scores", [], updateLeaderboard);
+            t.executeSql(SQL, [], updateLeaderboard);
         });
     } else {
         alert("db not found, your browser does not support web sql!");

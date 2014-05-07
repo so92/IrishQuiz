@@ -48,7 +48,7 @@ function updateUserList(transaction, results) {
 			// Append a text node to the cell
 			var name  = document.createTextNode(row.fname + " " + row.sname);		
 			var deleteButton = "<a href='javascript:void(0);' onclick='deleteUser(" + row.id + ");'><img src='images/delete.png'/></a>";
-  			var proceed  = "<a onclick='selectUser(" + row.id + ");'>select user</a>";
+  			var proceed  = "<a onclick='selectUser(" + row.id + ");'>Select User</a>";
   			
   			
 			newCell0.appendChild(name);

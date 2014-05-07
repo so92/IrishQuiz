@@ -67,7 +67,14 @@ background-size: 50px 50px;
 	background-color: limegreen;
 }
 
+#QuizMenu #GeogLeaderBoardButton{
+	background-color: limegreen;
+}
+
 #QuizMenu #HistoryQuiz{
+	background-color: burlywood;
+}
+#QuizMenu #HistLeaderBoardButton{
 	background-color: burlywood;
 }
 
@@ -77,6 +84,8 @@ background-size: 50px 50px;
 
 #QuizMenu #ReturnToMainMenu{
 	background-color: mediumvioletred;
+	color: white;
+text-shadow: none;
 }
 
 #UserSelect #NewUserButton{
@@ -120,6 +129,14 @@ background-size: 50px 50px;
 	align-content: center;
 }
 
+#pageHolder .showLB{
+	margin-left: auto;
+	margin-right: auto;
+	width: 76%;
+	margin-bottom: 50px;
+	align-content: center;
+}
+
 #pageHolder #answers{
 	margin-left: auto;
 	margin-right: auto;
@@ -130,7 +147,8 @@ background-size: 50px 50px;
 
 
 #pageHolder #PlayerNameHolder{
-	text-align:center
+	text-align:center;
+	padding-top: 15px;
 }
 
 #pageHolder .ButtonNext{
@@ -147,11 +165,40 @@ background-size: 50px 50px;
 padding-bottom: 50px;
 padding-top: 20px;
 font-size: 20px;
+
+font-weight: bold;
+font-size: xx-large;
+color: white;
+}
+#LeaderBoardHolder{
+	background: rgba(143, 188, 143, .5);
+	border:2px solid;
+	border-radius:25px;
+
+	margin-top:30px;
+	height:620px;
+		margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	
+	padding:10px;
+	
+
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .clipArt{
 	height:150px;
 	width:150px;
+}
+
+#leaderTable td:nth-child(2){
+	text-align: center;
+}
+
+#userTable td:nth-child(2){
+	text-align: center;
 }
 
 /* Radio */

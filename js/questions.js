@@ -362,7 +362,7 @@ function showAnswers(){
 		for(i=0;i<correctAnswers.length;i++){
 		listholder.innerHTML+=("<li>"+globalQs[i]+"<br>      "+correctAnswers[i]+"</li><br>");
 		}
-		listholder.innerHTML+= '<button id="ShowLeaderBoard" onclick="showLeaderBoard_AQ();">Show Leaderboard</button>';
+		listholder.innerHTML+= '<button id="ShowLeaderBoard" onclick="showLeaderBoard_AQ('+quiz_id+');">Show Leaderboard</button>';
 		listholder.innerHTML+= '<button id="ReturnToQuizMenu" onclick="returnToQuizMenu();">Return to Quiz Menu</button>';
 }
 
