@@ -40,7 +40,7 @@ background-size: 50px 50px;
 #pageHolder #UserSelect{
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 80%;
 	align-content: center;
 }
 
@@ -51,7 +51,7 @@ background-size: 50px 50px;
 }
 
 #Logo{
-	width: 100%;
+	width: 70%;
 	margin-top: 50px;
 }
 
@@ -59,7 +59,7 @@ background-size: 50px 50px;
 #pageHolder #PlayQuiz{
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 80%;
 	align-content: center;
 }
 
@@ -81,10 +81,28 @@ background-size: 50px 50px;
 
 #UserSelect #NewUserButton{
 	background-color: limegreen;
+	width: 60%;
+		margin-left: auto;
+	margin-right: auto;
+}
+
+#NewUserHolder{
+		width: 50%;
+		margin-left: auto;
+	margin-right: auto;
+}
+
+#ExistingUserHolder{
+		width: 50%;
+		margin-left: auto;
+	margin-right: auto;
 }
 
 #UserSelect #ExistingUserButton{
 	background-color: darksalmon;
+		width: 60%;
+		margin-left: auto;
+	margin-right: auto;
 
 }
 
@@ -92,9 +110,7 @@ background-size: 50px 50px;
 	padding-top: 60px;
 }
 
-.Questions .ButtonNext{
-	margin-bottom: 80px;
-}
+
 
 
 #pageHolder .showQuestions{
@@ -111,28 +127,37 @@ background-size: 50px 50px;
 	align-content: center;
 }
 
+
+
 #pageHolder #PlayerNameHolder{
 	text-align:center
 }
 
 #pageHolder .ButtonNext{
 	margin-top: 50px;
+	margin-bottom: 80px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
 	height: 40px;
 }
 
-#pageHolder .#playersScore{
+#playersScore{
 	text-align: center;
 padding-bottom: 50px;
 padding-top: 20px;
 font-size: 20px;
 }
 
+.clipArt{
+	height:150px;
+	width:150px;
+}
+
 /* Radio */
 
 input[type="radio"] {
+	margin-left: 100px;
 
     background-color: #ddd;
     background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),

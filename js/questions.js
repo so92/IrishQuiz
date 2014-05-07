@@ -158,7 +158,7 @@ function showQuestions(quizType)
 										
 									   
 									   
-					         		 	listholder.innerHTML+=("<div class = 'question'><h3>"+question+"<h3></div>");
+					         		 	listholder.innerHTML+=("<div class = 'question'><h5>"+(i+1)+"/10 </h5><h3>"+question+"<h3></div>");
 					         		 	listholder.innerHTML+=("<div class = 'answers'");
 
 										listholder.innerHTML+=("<input type='radio' value='"+questions[0]+"' name='question_"+i+"'><h6>a) " +questions[0]+".</h6><br>");
@@ -322,7 +322,17 @@ function submitScrore(count)
 		var dateString = (new Date()).toLocaleDateString();
 		var scoreHolder = document.getElementById("playersScore");
 		
-		scoreHolder.innerHTML = user + " you scored "+score;
+		var clipArt;
+		
+		if(score<=4){
+			clipArt = '<br><img class="clipArt" src="images/bad.png" />';
+			
+		}
+		else if(score>=5){
+			clipArt = '<br><img class="clipArt" src="images/good.png" />';
+		}
+		
+		scoreHolder.innerHTML = user + " you scored "+score +clipArt;
 		
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function (t) {
@@ -350,7 +360,7 @@ function showAnswers(){
 		//clear players list ul
 		listholder.innerHTML = "";	
 		for(i=0;i<correctAnswers.length;i++){
-		listholder.innerHTML+=("<li>"+globalQs[i]+" "+correctAnswers[i]+"</li>");
+		listholder.innerHTML+=("<li>"+globalQs[i]+"<br>      "+correctAnswers[i]+"</li><br>");
 		}
 		listholder.innerHTML+= '<button id="ShowLeaderBoard" onclick="showLeaderBoard_AQ();">Show Leaderboard</button>';
 		listholder.innerHTML+= '<button id="ReturnToQuizMenu" onclick="returnToQuizMenu();">Return to Quiz Menu</button>';
