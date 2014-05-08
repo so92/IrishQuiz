@@ -1,137 +1,106 @@
 <!DOCTYPE html>
 <html>
-	<head>	
-        <meta charset="utf-8" />
-<meta name="viewport" content="width=100%, height=100%, initial-scale=1, user-scalable=no">
-  		
-  		
-  		<link rel="stylesheet" href="CSS/jquery.mobile-1.4.0.min.css"/>
- 		<link rel="stylesheet" href="CSS/home.css"/>
-  		
-  		<script src="js/jquery-1.10.2.min.js"></script> 		
-  		<script src="js/jquery.mobile-1.4.0.min.js"></script>  
-  		
-  		<script src="js/database_init.js"></script>	
-	
-	</head>
-	
-	<body>
-		
-<div id="pageHolder">	
-		
-	<div id="UserSelect">
-		<div id="LogoHolder">
-			<img id="Logo" src="images/logo.png" />
-		</div>
-
-		<button type="button" id="NewUserButton" onclick="newUser();">New User</button>
-		<div id="NewUserHolder" style="display: none;">
-			 <h4><p><b>New User ? enter details</b></p></h4>
-		    <label>Forname:</label>
-		    <input type="text" id="fname" data-mini="true"/>
-		    <label>Surname:</label>
-		    <input type="text" id="sname" data-mini="true"/>
-		    <button type="button" id="adduser" onclick="addUser();">Enter With New User</button>
-	    </div>
-	    
-	    <button type="button" id="ExistingUserButton" onclick="existingUsers();">Existing Users</button>
-	    <div id="ExistingUserHolder" style="display: none;">
-			 <h4>Existing Users</h4>
-	   <ul data-role="listview" id="userlist"></ul>
-	   
-	<form>
-  			  <input id="userTable-input" data-type="search">
-	</form>
-<table data-role="table" id="userTable" data-filter="true" data-input="#userTable-input" class="ui-responsive ui-shadow">
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Delete</th>
-            <th>Proceed</th>
-        </tr>
-        </thead>
-        
-        <tbody>
-            
-        </tbody>
-    </table>
-	   
-	    </div>
-	</div>	
-	
-	
-			
-	<div id="PlayQuiz" style="display: none;">	
-		
-		<div id="QuizMenu">
-		<div id="PlayerNameHolder"></div>
- 		<button type="button" id="GeographyQuiz" class="showQuestions" onclick="showQuestions(1);">Geography Quiz</button>
- 		<button type="button" id="GeogLeaderBoardButton" class="showLB" onclick="showLeaderboard(1);">Geography Leaderboard</button>
-
-  		<button type="button" id="HistoryQuiz" class="showQuestions" onclick="showQuestions(3);">History Quiz</button>
- 		<button type="button" id="HistLeaderBoardButton" class="showLB" onclick="showLeaderboard(3);">History Leaderboard</button>
-
- 		<button type="button" id="LeaderBoardButton" class="showLB" onclick="showLeaderboard(99);">My Scores</button>
-		<button type="button" id="ReturnToMainMenu" class="showQuestions" onclick="ReturnToMainMenu();">Return to Main Menu</button>
- 		</div>
- 		
-			<div class="Questions" id= "question_0"  style="display: none;"></div>
-			<div class="Questions" id= "question_1" style="display: none;"></div>
-			<div class="Questions" id= "question_2" style="display: none;"></div>
-			<div class="Questions" id= "question_3" style="display: none;"></div>
-			<div class="Questions" id= "question_4" style="display: none;"></div>
-			<div class="Questions" id= "question_5" style="display: none;"></div>
-			<div class="Questions" id= "question_6" style="display: none;"></div>
-			<div class="Questions" id= "question_7" style="display: none;"></div>
-			<div class="Questions" id= "question_8" style="display: none;"></div>
-			<div class="Questions" id= "question_9" style="display: none;"></div>
-
-			<div id= "playersScore"></div>
-		 	<div id= "answers"></div>
-		 	
-		 	<div id= "leaderboard" style="display: none;">
-		 		<H1>Leaderboard</H1>
-		 	<form>
-  			  <input id="leaderTable-input" data-type="search">
-			</form>
-	<div id="LeaderBoardHolder">	
-			
-		<table data-role="table" id="leaderTable" data-filter="true" data-input="#leaderTable-input" class="ui-responsive ui-shadow">
-		    <thead>
-		        <tr>
-		            <th>User</th>
-		            <th>Score</th>
-		            <th>Date</th>
-		            <th>Quiz</th>
-		        </tr>
-		        </thead>
-		        
-		        <tbody>
-		            
-		        </tbody>
-		    </table>
-		    
-		 </div>	   
-		    
-	   	<button type="button" id="ReturnToQuizMenu" class="showQuestions" onclick="ReturnToQuizMenu_LB();">Return to Main Menu</button>
-
-		 		
-		 	</div>
-	
-	
-	</div>
-	
-</div>		
-
-
-
-	
-	<script src="js/questions.js"></script>	
-	<script src="js/user.js"></script>
-	<script src="js/leaderboard.js"></script>	
-			
-		
-	
-	</body>
-	
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=100%, height=100%, initial-scale=1, user-scalable=no">
+      <link rel="stylesheet" href="CSS/jquery.mobile-1.4.0.min.css"/>
+      <link rel="stylesheet" href="CSS/home.css"/>
+      <script src="js/jquery-1.10.2.min.js"></script> 		
+      <script src="js/jquery.mobile-1.4.0.min.js"></script>  
+      <script src="js/database_init.js"></script>	
+   </head>
+   <body>
+      <div id="pageHolder">
+         <div id="UserSelect">
+            <div id="LogoHolder">
+               <img id="Logo" src="images/logo.png" />
+            </div>
+            <button type="button" id="NewUserButton" onclick="newUser();">New User</button>
+            <div id="NewUserHolder" style="display: none;">
+               <h4>
+                  <p><b>New User ? enter details</b></p>
+               </h4>
+               <img class="Help" src="images/help.png" onclick="showHelp(1);"/>
+               <label>Forname:</label>
+               <input type="text" id="fname" data-mini="true"/>
+               <label>Surname:</label>
+               <input type="text" id="sname" data-mini="true"/>
+               <button type="button" id="adduser" onclick="addUser();">Enter With New User</button>
+            </div>
+            <button type="button" id="ExistingUserButton" onclick="existingUsers();">Existing Users</button>
+            <div id="ExistingUserHolder" style="display: none;">
+               <h4>Existing Users</h4>
+               <img class="Help" src="images/help.png" onclick="showHelp(2);"/>
+               <ul data-role="listview" id="userlist"></ul>
+               <form>
+                  <input id="userTable-input" data-type="search">
+               </form>
+               <div id="userTableEx">
+                  <table data-role="table" id="userTable" data-filter="true" data-input="#userTable-input" class="ui-responsive ui-shadow">
+                     <thead>
+                        <tr>
+                           <th>User</th>
+                           <th>Delete</th>
+                           <th>Proceed</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <img id="homeHelp" class="Help" src="images/help.png" onclick="showHelp(0);"/>
+         </div>
+         <div id="PlayQuiz" style="display: none;">
+            <div id="QuizMenu">
+               <div id="PlayerNameHolder"></div>
+               <img class="Help" src="images/help.png" onclick="showHelp(3);"/>
+               <button type="button" id="GeographyQuiz" class="showQuestions" onclick="showQuestions(1);">Geography Quiz</button>
+               <button type="button" id="GeogLeaderBoardButton" class="showLB" onclick="showLeaderboard(1);">Geography Leaderboard</button>
+               <button type="button" id="HistoryQuiz" class="showQuestions" onclick="showQuestions(3);">History Quiz</button>
+               <button type="button" id="HistLeaderBoardButton" class="showLB" onclick="showLeaderboard(3);">History Leaderboard</button>
+               <button type="button" id="LeaderBoardButton" class="showLB" onclick="showLeaderboard(99);">My Scores</button>
+               <button type="button" id="ReturnToMainMenu" class="showQuestions" onclick="ReturnToMainMenu();">Return to Main Menu</button>
+            </div>
+            <div class="Questions" id= "question_0"  style="display: none;"></div>
+            <div class="Questions" id= "question_1" style="display: none;"></div>
+            <div class="Questions" id= "question_2" style="display: none;"></div>
+            <div class="Questions" id= "question_3" style="display: none;"></div>
+            <div class="Questions" id= "question_4" style="display: none;"></div>
+            <div class="Questions" id= "question_5" style="display: none;"></div>
+            <div class="Questions" id= "question_6" style="display: none;"></div>
+            <div class="Questions" id= "question_7" style="display: none;"></div>
+            <div class="Questions" id= "question_8" style="display: none;"></div>
+            <div class="Questions" id= "question_9" style="display: none;"></div>
+            <div id= "playersScore"></div>
+            <div id= "answers"></div>
+            <div id= "leaderboard" style="display: none;">
+               <H1 style="margin-top: 0px;">Leaderboard</H1>
+               <img id="homeHelp" class="Help" src="images/help.png" onclick="showHelp(7);"/>
+               <form>
+                  <input id="leaderTable-input" data-type="search">
+               </form>
+               <div id="LeaderBoardHolder">
+                  <table data-role="table" id="leaderTable" data-filter="true" data-input="#leaderTable-input" class="ui-responsive ui-shadow">
+                     <thead>
+                        <tr>
+                           <th>User</th>
+                           <th>Score</th>
+                           <th>Date</th>
+                           <th>Quiz</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <button type="button" id="ReturnToQuizMenu" class="showQuestions" onclick="ReturnToQuizMenu_LB();">Return to Main Menu</button>
+            </div>
+         </div>
+      </div>
+      <script src="js/help.js"></script>	
+      <script src="js/questions.js"></script>	
+      <script src="js/user.js"></script>
+      <script src="js/leaderboard.js"></script>	
+   </body>
 </html>

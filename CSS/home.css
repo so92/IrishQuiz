@@ -1,221 +1,222 @@
-.ui-page { 
-  height: 100%;
+.ui-page {
+    height: 100%;
 }
 
 h3 {
-	font-size: 33px;
-
+    font-size: 33px;
 }
 
-h6{
-font-size: 25px;
--webkit-margin-before: 0px;
--webkit-margin-after: 0px;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-display: -webkit-inline-box;
-
+h6 {
+    font-size: 25px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: -webkit-inline-box;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
 
-    html{
-        width:100%;
-        height:100%;
-        }
-
-        body{
-        width:100%;
-        height:100%;
-        }
+body {
+    width: 100%;
+    height: 100%;
+}
 
 #pageHolder {
-
--moz-box-sizing: content-box;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), rgb(170, 204, 0);
-background-size: 50px 50px;
+    -moz-box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0) 0), rgb(170, 204, 0);
+    background-size: 50px 50px;
 }
 
-#pageHolder #UserSelect{
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-	align-content: center;
+#pageHolder #UserSelect {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    align-content: center;
 }
 
-#pageHolder #LogoHolder{
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
+#pageHolder #LogoHolder {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
-#Logo{
-	width: 70%;
-	margin-top: 50px;
+#Logo {
+    margin-top: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
-#pageHolder #PlayQuiz{
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-	align-content: center;
+.Help {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#QuizMenu #GeographyQuiz{
-	background-color: limegreen;
+#pageHolder #PlayQuiz {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    align-content: center;
 }
 
-#QuizMenu #GeogLeaderBoardButton{
-	background-color: limegreen;
+#QuizMenu #GeographyQuiz {
+    background-color: limegreen;
+    margin-top: 30px;
 }
 
-#QuizMenu #HistoryQuiz{
-	background-color: burlywood;
-}
-#QuizMenu #HistLeaderBoardButton{
-	background-color: burlywood;
+#QuizMenu #GeogLeaderBoardButton {
+    background-color: limegreen;
 }
 
-#QuizMenu #LeaderBoardButton{
-	background-color: paleturquoise;
+#QuizMenu #HistoryQuiz {
+    background-color: burlywood;
 }
 
-#QuizMenu #ReturnToMainMenu{
-	background-color: mediumvioletred;
-	color: white;
-text-shadow: none;
+#QuizMenu #HistLeaderBoardButton {
+    background-color: burlywood;
 }
 
-#UserSelect #NewUserButton{
-	background-color: limegreen;
-	width: 60%;
-		margin-left: auto;
-	margin-right: auto;
+#QuizMenu #LeaderBoardButton {
+    background-color: paleturquoise;
 }
 
-#NewUserHolder{
-		width: 50%;
-		margin-left: auto;
-	margin-right: auto;
+#QuizMenu #ReturnToMainMenu {
+    background-color: mediumvioletred;
+    color: white;
+    text-shadow: none;
 }
 
-#ExistingUserHolder{
-		width: 50%;
-		margin-left: auto;
-	margin-right: auto;
+#UserSelect #NewUserButton {
+    background-color: limegreen;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#UserSelect #ExistingUserButton{
-	background-color: darksalmon;
-		width: 60%;
-		margin-left: auto;
-	margin-right: auto;
-
+#NewUserHolder {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.Questions .question{
-	padding-top: 60px;
+#ExistingUserHolder {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
-
-
-#pageHolder .showQuestions{
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-	align-content: center;
+#UserSelect #ExistingUserButton {
+    background-color: darksalmon;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#pageHolder .showLB{
-	margin-left: auto;
-	margin-right: auto;
-	width: 76%;
-	margin-bottom: 50px;
-	align-content: center;
+.Questions .question {
+    padding-top: 60px;
 }
 
-#pageHolder #answers{
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
-	align-content: center;
+#pageHolder .showQuestions {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    align-content: center;
 }
 
-
-
-#pageHolder #PlayerNameHolder{
-	text-align:center;
-	padding-top: 15px;
+#pageHolder .showLB {
+    margin-left: auto;
+    margin-right: auto;
+    width: 76%;
+    margin-bottom: 50px;
+    align-content: center;
 }
 
-#pageHolder .ButtonNext{
-	margin-top: 50px;
-	margin-bottom: 80px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-	height: 40px;
+#pageHolder #answers {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    align-content: center;
 }
 
-#playersScore{
-	text-align: center;
-padding-bottom: 50px;
-padding-top: 20px;
-font-size: 20px;
-
-font-weight: bold;
-font-size: xx-large;
-color: white;
-}
-#LeaderBoardHolder{
-	background: rgba(143, 188, 143, .5);
-	border:2px solid;
-	border-radius:25px;
-
-	margin-top:30px;
-	height:620px;
-		margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-	
-	padding:10px;
-	
-
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
+#pageHolder #PlayerNameHolder {
+    text-align: center;
+    padding-top: 15px;
 }
 
-.clipArt{
-	height:150px;
-	width:150px;
+#pageHolder .ButtonNext {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 40px;
+    display: block;
 }
 
-#leaderTable td:nth-child(2){
-	text-align: center;
+#playersScore {
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    font-size: xx-large;
+    color: white;
 }
 
-#userTable td:nth-child(2){
-	text-align: center;
+#LeaderBoardHolder {
+    background: rgba(143, 188, 143, .5);
+    border: 2px solid;
+    border-radius: 25px;
+    margin-top: 30px;
+    height: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
+#userTableEx {
+    background: rgba(143, 188, 143, .5);
+    border: 2px solid;
+    border-radius: 25px;
+    margin-top: 30px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 10px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.clipArt {
+    height: 150px;
+    width: 150px;
+}
+
+#leaderTable td:nth-child(2) {
+    text-align: center;
+}
+
+#userTable td:nth-child(2) {
+    text-align: center;
+}
 /* Radio */
-
 input[type="radio"] {
-	margin-left: 100px;
-
+    margin-left: 100px;
     background-color: #ddd;
-    background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
-                      -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
+    background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
     border-radius: 10px;
-    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.8),
-                0 0 0 1px hsla(0,0%,0%,.6),
-                0 2px 3px hsla(0,0%,0%,.6),
-                0 4px 3px hsla(0,0%,0%,.4),
-                0 6px 6px hsla(0,0%,0%,.2),
-                0 10px 6px hsla(0,0%,0%,.2);
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.8), 0 0 0 1px hsla(0,0%,0%,.6), 0 2px 3px hsla(0,0%,0%,.6), 0 4px 3px hsla(0,0%,0%,.4), 0 6px 6px hsla(0,0%,0%,.2), 0 10px 6px hsla(0,0%,0%,.2);
     cursor: pointer;
     display: inline-block;
     height: 40px;
@@ -224,12 +225,12 @@ input[type="radio"] {
     width: 40px;
     -webkit-appearance: none;
 }
+
 input[type="radio"]:after {
-	padding : 13px;
+    padding: 13px;
     background-color: #444;
     border-radius: 25px;
-    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
-                0 1px 1px hsla(0,0%,100%,.8);
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4), 0 1px 1px hsla(0,0%,100%,.8);
     content: '';
     display: block;
     height: 7px;
@@ -238,10 +239,8 @@ input[type="radio"]:after {
     top: 4px;
     width: 7px;
 }
+
 input[type="radio"]:checked:after {
     background-color: #f66;
-    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
-                inset 0 2px 2px hsla(0,0%,100%,.4),
-                0 1px 1px hsla(0,0%,100%,.8),
-                0 0 2px 2px hsla(0,70%,70%,.4);
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4), inset 0 2px 2px hsla(0,0%,100%,.4), 0 1px 1px hsla(0,0%,100%,.8), 0 0 2px 2px hsla(0,70%,70%,.4);
 }
