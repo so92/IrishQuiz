@@ -3,7 +3,7 @@ var PlayerName;
 function outputUsers() {
     //check to ensure the mydb object has been created
     if (mydb) {
-        //Get all the players from the database with a select statement, set outputPlayerList as the callback function for the executeSql command
+        //Get all the players from the database with a select statement, set outputUserList as the callback function for the executeSql command
         mydb.transaction(function(t) {
             t.executeSql("SELECT * FROM users", [], updateUserList);
         });
@@ -12,11 +12,11 @@ function outputUsers() {
     }
 }
 
-//function to output the list of players in the database
+//function to output the list of USERS in the database
 function updateUserList(transaction, results) {
     //initialise the listitems variable
     //   var listitems = "";
-    //get the player list holder ul
+    //get the user list holder ul
     //   var listholder = document.getElementById("userlist");
     var tableRef = document.getElementById("userTable").getElementsByTagName('tbody')[0];
 
@@ -47,7 +47,7 @@ function updateUserList(transaction, results) {
     }
 }
 
-//function to add the player to the database
+//function to add the user to the database
 function addUser() {
     //check to ensure the mydb object has been created
     if (mydb) {
@@ -59,7 +59,6 @@ function addUser() {
         if (fname !== "" && sname !== "") {
             //Insert the user entered details into the players table, note the use of the ? placeholder, these will replaced by the data passed in as an array as the second parameter
             mydb.transaction(function(t) {
-                //      alert(fname+sname+dob+position);
                 t.executeSql('INSERT INTO users (fname, sname) VALUES (?, ?)', [fname, sname], querySuccess);
 
             });
@@ -113,11 +112,11 @@ function existingUsers() {
     }
 }
 
-//function to remove a players from the database, passed the row id as it's only parameter
+//function to remove a user from the database, passed the row id as it's only parameter
 function deleteUser(id) {
     //check to ensure the mydb object has been created
     if (mydb) {
-        //Get all the players from the database with a select statement, set outputPlayerList as the callback function for the executeSql command
+        //Get all the users from the database with a select statement, set outputUserList as the callback function for the executeSql command
         mydb.transaction(function(t) {
             t.executeSql("DELETE FROM users WHERE id=?", [id], outputUsers);
         });
@@ -126,7 +125,7 @@ function deleteUser(id) {
     }
 }
 
-//function to remove a players from the database, passed the row id as it's only parameter
+//function to remove a user from the database, passed the row id as it's only parameter
 function selectUser(id) {
     // alert("you are here "+id);
     var user_id = id;
@@ -141,7 +140,6 @@ function selectUser(id) {
                 PlayerName = row.fname + " " + row.sname;
                 var holder = "<h1>Welcome " + PlayerName + "</h1>";
                 document.getElementById("PlayerNameHolder").innerHTML = holder;
-                //alert(PlayerName);
                 }
 
         });

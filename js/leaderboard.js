@@ -51,7 +51,7 @@ function queryLeaderboard(SQL) {
 
 }
 
-//function to output the list of players in the database
+//function to output the list of scores in the database
 function updateLeaderboard(transaction, results) {
 
     var tableRef = document.getElementById("leaderTable").getElementsByTagName('tbody')[0];

@@ -232,9 +232,9 @@ function submitScrore(count) {
 function showAnswers() {
 
     var listitems = "";
-    //get the player list holder ul
+    //get the answer list holder ul
     var listholder = document.getElementById("answers");
-    //clear players list ul
+    //clear sanswers list ul
     listholder.innerHTML = "";
     for (i = 0; i < correctAnswers.length; i++) {
         listholder.innerHTML += ("<li>" + globalQs[i] + "<br>      " + correctAnswers[i] + "</li><br>");
